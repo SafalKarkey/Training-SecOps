@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>css data</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <p id="details"></p>
+  <input type="text" value="safal" id="">
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const id = params.get("id") || "No ID provided";
+    const name = params.get("name") || "Guest";
+
+
+    document.getElementById("title").innerHTML = `${id}`;
+    document.getElementById("details").innerHTML = `Hello, ${name}`;
+  </script>
+</body>
+</html>

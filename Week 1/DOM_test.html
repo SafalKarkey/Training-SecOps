@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<body>
+  <div id="container">
+    Container Div (Node 1)
+    <p id="textTest">Test test</p>
+    <div class="display">Display Div (Node 2)</div>
+    <div class="controls">Controls Div (Node 3)</div>
+  </div>
+  <div class="display">DISPLAY</div>
+
+  <div class="myspan">SPAN</div>
+    <script>
+    const container = document.querySelector('#container');
+    const controls = container.lastElementChild;
+    console.log(controls);
+    
+    const dispSelectorAll = document.querySelectorAll('.display') // select all occurances of display class (NodeList)
+    console.log(dispSelectorAll)
+
+    container.addEventListener("click", (e) => {
+        alert('clicked display div');
+        e.target.style.background = 'blue'
+    })
+
+    disp = document.querySelector('.display')
+    var txt = document.createTextNode('new txt node');
+    disp.appendChild(txt)
+    console.log('Element\'s node type: ' + disp.nodeType);
+    console.log('Text\'s node type: ' + txt.nodeType)
+  </script>
+</body>
