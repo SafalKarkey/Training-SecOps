@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live DOM Viewer</title>
+</head>
+<body>
+    <textarea id="input" rows="20" cols="50">
+<h1>Hello World</h1>
+<p>Type HTML here...</p>
+    </textarea>
+    <br>
+    <iframe id="output" width="500" height="400"></iframe>
+    <script>
+        const input = document.getElementById('input');
+        const output = document.getElementById('output');
+        
+        function update() {
+            output.srcdoc = input.value;
+        }
+        
+        input.addEventListener('input', update);
+        update();
+    </script>
+</body>
+</html>
