@@ -13,15 +13,6 @@ for (var i = 0; i < scripts.length; i++) {
   }
 }
 
-var pageHTML = document.documentElement.innerHTML;
-for (var k = 0; k < badThings.length; k++) {
-  if (pageHTML.indexOf(badThings[k]) !== -1) {
-    if (foundBad.indexOf(badThings[k]) === -1) {
-      foundBad.push(badThings[k]);
-    }
-  }
-}
-
 // popup asking for results
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   sendResponse({foundBad: foundBad});
