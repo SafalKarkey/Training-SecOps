@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Comments</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input, textarea { width: 300px; padding: 5px; margin: 5px 0; }
+        button { padding: 5px 10px; }
+        .admin-panel { display: none; background: rgb(222, 109, 109); padding: 10px; margin: 10px 0; }
+        .comment { background: #5e44d2; padding: 5px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Comment section</h1>
+
+        <div>
+            <label>Your Name:</label>
+            <input type="text" id="author" placeholder="Enter your name">
+        </div>
+        
+        <div>
+            <label>Comment:</label>
+            <textarea id="comment" placeholder="What's on your mind?"></textarea>
+        </div>
+        
+        <button onclick="postComment()">Post Comment</button>
+        
+        <div id="commentSection">
+            <h3>Recent Comments</h3>
+        </div>
+        
+        <div class="admin-panel" id="adminPanel">
+            <h3>Admin Panel</h3>
+            <p>You have bypassed the moderation system.</p>
+            <div id="flagContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        function postComment() {
+            var author = document.getElementById('author').value;
+            var comment = document.getElementById('comment').value;
+            
+            if (author && comment) {
+                var commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerHTML = '<strong>' + author + ':</strong> ' + comment;
+                document.getElementById('commentSection').appendChild(commentDiv);
+                
+                document.getElementById('author').value = '';
+                document.getElementById('comment').value = '';
+                
+                setTimeout(function() {
+                    if (window.isAdmin) {
+                        document.getElementById('adminPanel').style.display = 'block';
+                        var parts = ['LCTF{', 'simple_', 'dom_', 'clobbering_', 'works', '}'];
+                        var flag = parts.join('');
+                        document.getElementById('flagContainer').innerHTML = 'FLAG: ' + flag;
+                    }
+                }, 200);
+            } else {
+                alert('name and comment boith required!!');
+            }
+        }
+    </script>
+</body>
+</html>

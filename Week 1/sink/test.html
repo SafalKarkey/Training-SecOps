@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <p>This page has dangerous stuff for testing the extension</p>
+    
+    <script>
+        var element = document.getElementById('test');
+        element.innerHTML = 'hello';
+        
+        eval('console.log("test")');
+        
+        document.write('test');
+        
+        setTimeout(function() {
+            console.log('timeout');
+        }, 1000);
+        
+        location.href = '#test';
+    </script>
+</body>
+</html>
